@@ -6,4 +6,6 @@ export type Profile = {
   location: string;
   phone: string;
   avatar: string;
+  coverPhoto: string;
+  dateJoined: string;
 };
