@@ -1,3 +1,3 @@
 # React Native Training Exercise 1
 ## Profile Page
-![This is my diagram](./assets/profilepage.png)
+<img src="./assets/profilepage.png" alt="Profile Page" width="300" height="200">
