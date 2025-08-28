@@ -184,6 +184,19 @@ const ProfileScreen = () => {
           </View>
         ))}
       </View>
+
+      {/* Footer Container */}
+      <View style={styles.footerContainer}>
+        <Pressable
+          style={({ pressed }) => [
+            styles.editProfileButton,
+            { backgroundColor: pressed ? "#A570FF" : "#fff" },
+          ]}
+          onPress={handleEditProfile}
+        >
+          <Text>Edit Profile</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -334,6 +347,20 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     paddingVertical: 8,
     paddingHorizontal: 15,
+  },
+  footerContainer: {
+    paddingHorizontal: 15,
+    marginTop: 20,
+  },
+  editProfileButton: {
+    borderWidth: 1,
+    borderColor: "#6F6F6F",
+    borderRadius: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#EEEEEE",
   },
 });
 
