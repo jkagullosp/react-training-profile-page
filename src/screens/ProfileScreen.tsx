@@ -36,6 +36,14 @@ const ProfileScreen = () => {
     phone: "+63 951 639 5613",
     dateJoined: "26 Aug 2025",
     website: "www.jkyle.com",
+    tags: [
+      "Software Engineer",
+      "React Native Developer",
+      "Typescript",
+      "Cat Lover",
+      "Dog Lover",
+      "Pogi",
+    ],
     avatar:
       "https://i.pinimg.com/564x/bb/c3/73/bbc373a32cbcf5984d611391134d17a9.jpg",
     coverPhoto:
@@ -118,29 +126,63 @@ const ProfileScreen = () => {
       {/* Information Container */}
       <View style={styles.informationContainer}>
         <Text style={styles.informationHeader}>Information</Text>
-        {/* Information Row Container */}
-        <View style={styles.informationRowContainer}>
-          <View style={styles.informationRow}>
-            <Icon name="globe-outline" />
-            <Text>Website</Text>
-            <Text>{profile.website}</Text>
+        {/* Table Container */}
+        <View style={styles.table}>
+          {/* Table Row */}
+          <View style={styles.tableRow}>
+            <View style={styles.tableCellIcon}>
+              <Icon name="globe-outline" size={18} />
+            </View>
+            <View style={styles.tableCellLabel}>
+              <Text style={styles.tableLabel}>Website</Text>
+            </View>
+            <View style={styles.tableCellValue}>
+              <Text style={styles.tableValue}>{profile.website}</Text>
+            </View>
           </View>
-          <View style={styles.informationRow}>
-            <Icon name="mail-outline" />
-            <Text>Email</Text>
-            <Text>{profile.email}</Text>
+          <View style={styles.tableRow}>
+            <View style={styles.tableCellIcon}>
+              <Icon name="mail-outline" size={18} />
+            </View>
+            <View style={styles.tableCellLabel}>
+              <Text style={styles.tableLabel}>Email</Text>
+            </View>
+            <View style={styles.tableCellValue}>
+              <Text style={styles.tableValue}>{profile.email}</Text>
+            </View>
           </View>
-          <View style={styles.informationRow}>
-            <Icon name="call-outline" />
-            <Text>Phone</Text>
-            <Text>{profile.phone}</Text>
+          <View style={styles.tableRow}>
+            <View style={styles.tableCellIcon}>
+              <Icon name="call-outline" size={18} />
+            </View>
+            <View style={styles.tableCellLabel}>
+              <Text style={styles.tableLabel}>Phone</Text>
+            </View>
+            <View style={styles.tableCellValue}>
+              <Text style={styles.tableValue}>{profile.phone}</Text>
+            </View>
           </View>
-          <View style={styles.informationRow}>
-            <Icon name="calendar-outline" />
-            <Text>Phone</Text>
-            <Text>{profile.dateJoined}</Text>
+          <View style={styles.tableRow}>
+            <View style={styles.tableCellIcon}>
+              <Icon name="calendar-outline" size={18} />
+            </View>
+            <View style={styles.tableCellLabel}>
+              <Text style={styles.tableLabel}>Joined</Text>
+            </View>
+            <View style={styles.tableCellValue}>
+              <Text style={styles.tableValue}>{profile.dateJoined}</Text>
+            </View>
           </View>
         </View>
+      </View>
+
+      {/* Tags Container */}
+      <View style={styles.tagsContainer}>
+        {profile.tags.map((tag, idx) => (
+          <View key={idx} style={styles.tags}>
+            <Text>{tag}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -149,7 +191,7 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EAEAEA",
+    backgroundColor: "#EEEEEE",
   },
   content: {
     flex: 1,
@@ -238,6 +280,60 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+  },
+  table: {
+    flexDirection: "column",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  tableRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    backgroundColor: "#eee",
+  },
+  tableCellIcon: {
+    width: 32,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tableCellLabel: {
+    width: 80,
+    justifyContent: "center",
+  },
+  tableCellValue: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  tableLabel: {
+    fontSize: 14,
+    color: "#333",
+  },
+  tableValue: {
+    fontSize: 14,
+    color: "#666",
+  },
+  tagsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    gap: 15,
+    marginTop: 10,
+    paddingHorizontal: 15,
+  },
+  tags: {
+    flexDirection: "row",
+    gap: 5,
+    borderWidth: 1,
+    borderColor: "#6F6F6F",
+    borderRadius: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
   },
 });
 

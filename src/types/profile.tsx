@@ -9,4 +9,5 @@ export type Profile = {
   coverPhoto: string;
   dateJoined: string;
   website: string;
+  tags: string[];
 };
