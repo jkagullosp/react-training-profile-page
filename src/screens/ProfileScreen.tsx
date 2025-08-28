@@ -14,7 +14,7 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import { StorageService } from "../services/storageService";
 import Constants from "expo-constants";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Profile } from "../types/profile";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../types/navigation";
@@ -50,9 +50,11 @@ const ProfileScreen = () => {
       "https://static.basicinvite.com/media/bi/34788/painted-peonies-wallpaper-l-grey.jpg?q=1746745859",
   });
 
-  useEffect(() => {
-    loadProfile();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      loadProfile();
+    }, [])
+  );
 
   const loadProfile = async () => {
     try {
@@ -76,7 +78,9 @@ const ProfileScreen = () => {
     try {
       await StorageService.storeData("profile", updatedProfile);
       setProfile(updatedProfile);
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error saving profile: ", error);
+    }
   };
 
   return (
@@ -190,7 +194,7 @@ const ProfileScreen = () => {
         <Pressable
           style={({ pressed }) => [
             styles.editProfileButton,
-            { backgroundColor: pressed ? "#A570FF" : "#fff" },
+            { backgroundColor: pressed ? "#ddd" : "#fff" },
           ]}
           onPress={handleEditProfile}
         >
@@ -297,7 +301,7 @@ const styles = StyleSheet.create({
   table: {
     flexDirection: "column",
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "#6F6F6F",
     borderRadius: 8,
     overflow: "hidden",
   },
@@ -336,7 +340,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "flex-start",
     gap: 15,
-    marginTop: 10,
+    marginTop: 15,
     paddingHorizontal: 15,
   },
   tags: {
