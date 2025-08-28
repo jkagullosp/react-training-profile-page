@@ -8,4 +8,5 @@ export type Profile = {
   avatar: string;
   coverPhoto: string;
   dateJoined: string;
+  website: string;
 };
